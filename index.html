@@ -102,98 +102,16 @@
     }
 
     .royal-frame__band {
-      position: absolute;
-      opacity: 0.42;
-      animation: royalBandGlow 16s ease-in-out infinite;
+      display: none;
     }
 
-    .royal-frame__band--top {
-      top: calc(var(--frame-inset-outer) + 5px);
-      left: calc(var(--corner-w) + var(--frame-inset-outer));
-      right: calc(var(--corner-w) + var(--frame-inset-outer));
-      height: clamp(8px, 1.4vw, 12px);
-      background:
-        repeating-radial-gradient(
-          circle at 0 50%,
-          rgba(126, 95, 29, 0.26) 0 3px,
-          rgba(255, 247, 230, 0.92) 3px 6px,
-          rgba(207, 164, 71, 0.95) 6px 9px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255, 247, 230, 0.18) 0 1px,
-          rgba(207, 164, 71, 0.45) 1px 3px,
-          rgba(255, 247, 230, 0.18) 3px 4px
-        ),
-        linear-gradient(90deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
-      background-blend-mode: normal, overlay, normal;
-    }
+    .royal-frame__band--top { display: none; }
 
-    .royal-frame__band--bottom {
-      bottom: calc(var(--frame-inset-outer) + 5px);
-      left: calc(var(--corner-w) + var(--frame-inset-outer));
-      right: calc(var(--corner-w) + var(--frame-inset-outer));
-      height: clamp(8px, 1.4vw, 12px);
-      background:
-        repeating-radial-gradient(
-          circle at 0 50%,
-          rgba(126, 95, 29, 0.26) 0 3px,
-          rgba(255, 247, 230, 0.92) 3px 6px,
-          rgba(207, 164, 71, 0.95) 6px 9px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255, 247, 230, 0.18) 0 1px,
-          rgba(207, 164, 71, 0.45) 1px 3px,
-          rgba(255, 247, 230, 0.18) 3px 4px
-        ),
-        linear-gradient(90deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
-      background-blend-mode: normal, overlay, normal;
-    }
+    .royal-frame__band--bottom { display: none; }
 
-    .royal-frame__band--left {
-      left: calc(var(--frame-inset-outer) + 5px);
-      top: calc(var(--corner-w) + var(--frame-inset-outer));
-      bottom: calc(var(--corner-w) + var(--frame-inset-outer));
-      width: clamp(8px, 1.4vw, 12px);
-      background:
-        repeating-radial-gradient(
-          circle at 50% 0,
-          rgba(126, 95, 29, 0.26) 0 3px,
-          rgba(255, 247, 230, 0.92) 3px 6px,
-          rgba(207, 164, 71, 0.95) 6px 9px
-        ),
-        repeating-linear-gradient(
-          180deg,
-          rgba(255, 247, 230, 0.18) 0 1px,
-          rgba(207, 164, 71, 0.45) 1px 3px,
-          rgba(255, 247, 230, 0.18) 3px 4px
-        ),
-        linear-gradient(180deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
-      background-blend-mode: normal, overlay, normal;
-    }
+    .royal-frame__band--left { display: none; }
 
-    .royal-frame__band--right {
-      right: calc(var(--frame-inset-outer) + 5px);
-      top: calc(var(--corner-w) + var(--frame-inset-outer));
-      bottom: calc(var(--corner-w) + var(--frame-inset-outer));
-      width: clamp(8px, 1.4vw, 12px);
-      background:
-        repeating-radial-gradient(
-          circle at 50% 0,
-          rgba(126, 95, 29, 0.26) 0 3px,
-          rgba(255, 247, 230, 0.92) 3px 6px,
-          rgba(207, 164, 71, 0.95) 6px 9px
-        ),
-        repeating-linear-gradient(
-          180deg,
-          rgba(255, 247, 230, 0.18) 0 1px,
-          rgba(207, 164, 71, 0.45) 1px 3px,
-          rgba(255, 247, 230, 0.18) 3px 4px
-        ),
-        linear-gradient(180deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
-      background-blend-mode: normal, overlay, normal;
-    }
+    .royal-frame__band--right { display: none; }
 
     .royal-corner {
       position: absolute;
@@ -228,12 +146,6 @@
     @keyframes royalBandGlow {
       0%, 100% { opacity: 0.64; filter: brightness(1); }
       50% { opacity: 0.88; filter: brightness(1.08); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .royal-frame__band {
-        animation: none;
-      }
     }
 
     .page {
@@ -574,9 +486,6 @@
     }
 
     @media (max-width: 430px) {
-      .royal-frame__band {
-        opacity: 0.48;
-      }
       .royal-corner {
         width: clamp(44px, 13vw, 76px);
       }
@@ -720,14 +629,12 @@
     const celebration = document.getElementById("celebration");
     const openBtn = document.getElementById("openBtn");
     const colors = [
+      "#1f3a5f",
+      "#4a6487",
+      "#7e90ab",
+      "#b0bed3",
       "#d4af37",
-      "#f4e4bc",
-      "#c9a227",
-      "#8b6914",
-      "#5c4510",
-      "#ffe082",
-      "#b8860b",
-      "#1a4d6e"
+      "#f4deaa"
     ];
 
     function getFallDistance() {
