@@ -6,18 +6,19 @@
   <title>З Днем народження</title>
   <style>
     :root {
-      --bg1: #141a24;
-      --bg2: #1c2433;
-      --bg3: #0a0d12;
-      --text-main: #e8e4dc;
-      --card-bg: rgba(18, 22, 32, 0.88);
-      --gold-deep: #5c4510;
-      --gold-mid: #b8860b;
-      --gold-bright: #f4e4bc;
-      --gold-shine: #fff8e7;
-      --frame-inset-outer: clamp(7px, 1.8vw, 16px);
-      --frame-inset-inner: clamp(16px, 2.8vw, 30px);
-      --corner-w: clamp(52px, 14vw, 118px);
+      --bg1: #fffdf7;
+      --bg2: #fdf7ea;
+      --bg3: #f7edd7;
+      --text-main: #2c2416;
+      --card-bg: rgba(255, 255, 255, 0.78);
+      --gold-deep: #8c6a1f;
+      --gold-mid: #cfa447;
+      --gold-bright: #f4deaa;
+      --gold-shine: #fff7e6;
+      --ornament-dark: #7e5f1d;
+      --frame-inset-outer: clamp(8px, 2vw, 18px);
+      --frame-inset-inner: clamp(18px, 3vw, 34px);
+      --corner-w: clamp(56px, 15vw, 124px);
     }
 
     * {
@@ -46,10 +47,9 @@
       overscroll-behavior-x: none;
       touch-action: pan-y;
       background:
-        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(212, 175, 55, 0.14), transparent 55%),
-        radial-gradient(ellipse 90% 60% at 100% 100%, rgba(139, 105, 20, 0.12), transparent 45%),
-        radial-gradient(ellipse 70% 50% at 0% 80%, rgba(184, 134, 11, 0.08), transparent 40%),
-        linear-gradient(155deg, var(--bg3), var(--bg2) 42%, var(--bg1));
+        radial-gradient(ellipse 90% 55% at 50% 0%, rgba(250, 236, 196, 0.52), transparent 70%),
+        radial-gradient(ellipse 80% 45% at 100% 100%, rgba(220, 184, 104, 0.2), transparent 65%),
+        linear-gradient(160deg, var(--bg1), var(--bg2) 48%, var(--bg3));
     }
 
     .royal-frame {
@@ -64,18 +64,18 @@
       position: absolute;
       inset: 0;
       box-shadow:
-        inset 0 0 min(100px, 14vw) rgba(212, 175, 55, 0.1),
-        inset 0 0 min(220px, 28vw) rgba(0, 0, 0, 0.5);
+        inset 0 0 min(140px, 16vw) rgba(207, 164, 71, 0.16),
+        inset 0 0 min(300px, 30vw) rgba(126, 95, 29, 0.08);
     }
 
     .royal-frame__line {
       position: absolute;
-      border-radius: 2px;
+      border-radius: 5px;
     }
 
     .royal-frame__line--outer {
       inset: var(--frame-inset-outer);
-      border: 2px solid transparent;
+      border: 1px solid transparent;
       background:
         linear-gradient(transparent, transparent) padding-box,
         linear-gradient(
@@ -88,102 +88,118 @@
           var(--gold-deep)
         ) border-box;
       box-shadow:
-        0 0 0 1px rgba(40, 30, 8, 0.85),
-        0 0 min(32px, 4vw) rgba(212, 175, 55, 0.15),
-        inset 0 0 20px rgba(212, 175, 55, 0.06);
+        0 0 0 1px rgba(255, 248, 230, 0.9),
+        0 0 min(24px, 4vw) rgba(212, 175, 85, 0.22),
+        inset 0 0 20px rgba(212, 175, 55, 0.12);
     }
 
     .royal-frame__line--inner {
       inset: var(--frame-inset-inner);
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      border: 1px solid rgba(212, 175, 55, 0.48);
       box-shadow:
-        inset 0 0 0 1px rgba(60, 45, 12, 0.6),
-        inset 0 0 14px rgba(212, 175, 55, 0.05);
+        inset 0 0 0 1px rgba(255, 248, 231, 0.64),
+        inset 0 0 14px rgba(212, 175, 55, 0.12);
     }
 
     .royal-frame__band {
       position: absolute;
-      opacity: 0.92;
-      animation: royalBandGlow 10s ease-in-out infinite;
+      opacity: 0.72;
+      animation: royalBandGlow 14s ease-in-out infinite;
     }
 
     .royal-frame__band--top {
       top: calc(var(--frame-inset-outer) + 5px);
       left: calc(var(--corner-w) + var(--frame-inset-outer));
       right: calc(var(--corner-w) + var(--frame-inset-outer));
-      height: clamp(7px, 1.4vw, 12px);
+      height: clamp(8px, 1.4vw, 12px);
       background:
+        repeating-radial-gradient(
+          circle at 0 50%,
+          rgba(126, 95, 29, 0.26) 0 3px,
+          rgba(255, 247, 230, 0.92) 3px 6px,
+          rgba(207, 164, 71, 0.95) 6px 9px
+        ),
         repeating-linear-gradient(
           90deg,
-          rgba(60, 45, 12, 0.9) 0 2px,
-          rgba(244, 228, 188, 0.85) 2px 4px,
-          rgba(139, 105, 20, 0.75) 4px 6px,
-          rgba(244, 228, 188, 0.55) 6px 8px,
-          rgba(60, 45, 12, 0.9) 8px 10px
+          rgba(255, 247, 230, 0.18) 0 1px,
+          rgba(207, 164, 71, 0.45) 1px 3px,
+          rgba(255, 247, 230, 0.18) 3px 4px
         ),
         linear-gradient(90deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
-      background-blend-mode: soft-light, normal;
+      background-blend-mode: normal, overlay, normal;
     }
 
     .royal-frame__band--bottom {
       bottom: calc(var(--frame-inset-outer) + 5px);
       left: calc(var(--corner-w) + var(--frame-inset-outer));
       right: calc(var(--corner-w) + var(--frame-inset-outer));
-      height: clamp(7px, 1.4vw, 12px);
+      height: clamp(8px, 1.4vw, 12px);
       background:
+        repeating-radial-gradient(
+          circle at 0 50%,
+          rgba(126, 95, 29, 0.26) 0 3px,
+          rgba(255, 247, 230, 0.92) 3px 6px,
+          rgba(207, 164, 71, 0.95) 6px 9px
+        ),
         repeating-linear-gradient(
           90deg,
-          rgba(60, 45, 12, 0.9) 0 2px,
-          rgba(244, 228, 188, 0.85) 2px 4px,
-          rgba(139, 105, 20, 0.75) 4px 6px,
-          rgba(244, 228, 188, 0.55) 6px 8px,
-          rgba(60, 45, 12, 0.9) 8px 10px
+          rgba(255, 247, 230, 0.18) 0 1px,
+          rgba(207, 164, 71, 0.45) 1px 3px,
+          rgba(255, 247, 230, 0.18) 3px 4px
         ),
         linear-gradient(90deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
-      background-blend-mode: soft-light, normal;
+      background-blend-mode: normal, overlay, normal;
     }
 
     .royal-frame__band--left {
       left: calc(var(--frame-inset-outer) + 5px);
       top: calc(var(--corner-w) + var(--frame-inset-outer));
       bottom: calc(var(--corner-w) + var(--frame-inset-outer));
-      width: clamp(7px, 1.4vw, 12px);
+      width: clamp(8px, 1.4vw, 12px);
       background:
+        repeating-radial-gradient(
+          circle at 50% 0,
+          rgba(126, 95, 29, 0.26) 0 3px,
+          rgba(255, 247, 230, 0.92) 3px 6px,
+          rgba(207, 164, 71, 0.95) 6px 9px
+        ),
         repeating-linear-gradient(
           180deg,
-          rgba(60, 45, 12, 0.9) 0 2px,
-          rgba(244, 228, 188, 0.85) 2px 4px,
-          rgba(139, 105, 20, 0.75) 4px 6px,
-          rgba(244, 228, 188, 0.55) 6px 8px,
-          rgba(60, 45, 12, 0.9) 8px 10px
+          rgba(255, 247, 230, 0.18) 0 1px,
+          rgba(207, 164, 71, 0.45) 1px 3px,
+          rgba(255, 247, 230, 0.18) 3px 4px
         ),
         linear-gradient(180deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
-      background-blend-mode: soft-light, normal;
+      background-blend-mode: normal, overlay, normal;
     }
 
     .royal-frame__band--right {
       right: calc(var(--frame-inset-outer) + 5px);
       top: calc(var(--corner-w) + var(--frame-inset-outer));
       bottom: calc(var(--corner-w) + var(--frame-inset-outer));
-      width: clamp(7px, 1.4vw, 12px);
+      width: clamp(8px, 1.4vw, 12px);
       background:
+        repeating-radial-gradient(
+          circle at 50% 0,
+          rgba(126, 95, 29, 0.26) 0 3px,
+          rgba(255, 247, 230, 0.92) 3px 6px,
+          rgba(207, 164, 71, 0.95) 6px 9px
+        ),
         repeating-linear-gradient(
           180deg,
-          rgba(60, 45, 12, 0.9) 0 2px,
-          rgba(244, 228, 188, 0.85) 2px 4px,
-          rgba(139, 105, 20, 0.75) 4px 6px,
-          rgba(244, 228, 188, 0.55) 6px 8px,
-          rgba(60, 45, 12, 0.9) 8px 10px
+          rgba(255, 247, 230, 0.18) 0 1px,
+          rgba(207, 164, 71, 0.45) 1px 3px,
+          rgba(255, 247, 230, 0.18) 3px 4px
         ),
         linear-gradient(180deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
-      background-blend-mode: soft-light, normal;
+      background-blend-mode: normal, overlay, normal;
     }
 
     .royal-corner {
       position: absolute;
       width: var(--corner-w);
       height: auto;
-      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+      filter: drop-shadow(0 2px 8px rgba(126, 95, 29, 0.18));
     }
 
     .royal-corner--tl {
@@ -210,8 +226,8 @@
     }
 
     @keyframes royalBandGlow {
-      0%, 100% { opacity: 0.88; filter: brightness(1); }
-      50% { opacity: 1; filter: brightness(1.12); }
+      0%, 100% { opacity: 0.64; filter: brightness(1); }
+      50% { opacity: 0.88; filter: brightness(1.08); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -249,8 +265,8 @@
     .intro-title {
       font-size: 1.5rem;
       margin: 0 0 1rem;
-      color: #faf6ef;
-      text-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
+      color: #443118;
+      text-shadow: 0 0 14px rgba(207, 164, 71, 0.18);
     }
 
     .open-btn {
@@ -265,14 +281,14 @@
         var(--gold-mid),
         var(--gold-deep)
       );
-      color: #1a1408;
+      color: #2e210f;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
       box-shadow:
-        0 10px 28px rgba(0, 0, 0, 0.35),
-        0 0 0 1px rgba(244, 228, 188, 0.35),
-        inset 0 1px 0 rgba(255, 248, 231, 0.45);
+        0 8px 20px rgba(126, 95, 29, 0.18),
+        0 0 0 1px rgba(255, 248, 231, 0.56),
+        inset 0 1px 0 rgba(255, 248, 231, 0.52);
       transition: transform 180ms ease;
     }
 
@@ -347,10 +363,10 @@
       background: var(--card-bg);
       backdrop-filter: blur(10px);
       box-shadow:
-        0 12px 40px rgba(0, 0, 0, 0.45),
-        0 0 0 1px rgba(92, 69, 16, 0.65),
-        inset 0 1px 0 rgba(255, 248, 231, 0.08);
-      border: 1px solid rgba(212, 175, 55, 0.42);
+        0 16px 34px rgba(126, 95, 29, 0.18),
+        0 0 0 1px rgba(255, 248, 231, 0.74),
+        inset 0 1px 0 rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(212, 175, 55, 0.38);
       animation: fadeInUp 700ms 350ms ease both;
       overflow-wrap: break-word;
       word-break: break-word;
@@ -362,7 +378,7 @@
       margin: 1rem auto 0;
       border-radius: 1rem;
       overflow: hidden;
-      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 12px 26px rgba(126, 95, 29, 0.2);
       animation: photoFloat 4s ease-in-out infinite;
     }
 
@@ -389,15 +405,15 @@
       margin-top: 0;
       margin-bottom: 1rem;
       font-size: clamp(1.75rem, 4vw, 2.5rem);
-      color: #fff8ef;
-      text-shadow: 0 2px 18px rgba(212, 175, 55, 0.25);
+      color: #3c2d16;
+      text-shadow: 0 2px 16px rgba(255, 248, 231, 0.65);
     }
 
     .letter p {
       margin: 0 0 1rem;
       line-height: 1.7;
       font-size: 1.075rem;
-      color: #cbd5e1;
+      color: #4a3b24;
     }
 
     .letter p:last-of-type {
@@ -407,7 +423,7 @@
     .letter .sign {
       margin-top: 1rem;
       margin-bottom: 0;
-      color: #d4c4a8;
+      color: #7f6027;
       font-size: 0.98rem;
     }
 
@@ -545,6 +561,12 @@
     }
 
     @media (max-width: 430px) {
+      .royal-frame__band {
+        opacity: 0.48;
+      }
+      .royal-corner {
+        width: clamp(44px, 13vw, 76px);
+      }
       .party-emoji {
         font-size: 2.6rem;
       }
@@ -573,11 +595,11 @@
     <svg class="royal-corner royal-corner--tl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
       <defs>
         <linearGradient id="royalGoldA" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#3d2e0a"/>
-          <stop offset="0.28" stop-color="#e8c872"/>
-          <stop offset="0.5" stop-color="#fff8e7"/>
-          <stop offset="0.72" stop-color="#c9a227"/>
-          <stop offset="1" stop-color="#4a3808"/>
+          <stop offset="0" stop-color="#a57b28"/>
+          <stop offset="0.28" stop-color="#f2dca8"/>
+          <stop offset="0.5" stop-color="#fffdf7"/>
+          <stop offset="0.72" stop-color="#d3ac56"/>
+          <stop offset="1" stop-color="#8d671d"/>
         </linearGradient>
       </defs>
       <g fill="none" stroke="url(#royalGoldA)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
@@ -591,11 +613,11 @@
     <svg class="royal-corner royal-corner--tr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
       <defs>
         <linearGradient id="royalGoldB" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#3d2e0a"/>
-          <stop offset="0.28" stop-color="#e8c872"/>
-          <stop offset="0.5" stop-color="#fff8e7"/>
-          <stop offset="0.72" stop-color="#c9a227"/>
-          <stop offset="1" stop-color="#4a3808"/>
+          <stop offset="0" stop-color="#a57b28"/>
+          <stop offset="0.28" stop-color="#f2dca8"/>
+          <stop offset="0.5" stop-color="#fffdf7"/>
+          <stop offset="0.72" stop-color="#d3ac56"/>
+          <stop offset="1" stop-color="#8d671d"/>
         </linearGradient>
       </defs>
       <g fill="none" stroke="url(#royalGoldB)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
@@ -609,11 +631,11 @@
     <svg class="royal-corner royal-corner--bl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
       <defs>
         <linearGradient id="royalGoldC" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#3d2e0a"/>
-          <stop offset="0.28" stop-color="#e8c872"/>
-          <stop offset="0.5" stop-color="#fff8e7"/>
-          <stop offset="0.72" stop-color="#c9a227"/>
-          <stop offset="1" stop-color="#4a3808"/>
+          <stop offset="0" stop-color="#a57b28"/>
+          <stop offset="0.28" stop-color="#f2dca8"/>
+          <stop offset="0.5" stop-color="#fffdf7"/>
+          <stop offset="0.72" stop-color="#d3ac56"/>
+          <stop offset="1" stop-color="#8d671d"/>
         </linearGradient>
       </defs>
       <g fill="none" stroke="url(#royalGoldC)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
@@ -627,11 +649,11 @@
     <svg class="royal-corner royal-corner--br" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
       <defs>
         <linearGradient id="royalGoldD" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#3d2e0a"/>
-          <stop offset="0.28" stop-color="#e8c872"/>
-          <stop offset="0.5" stop-color="#fff8e7"/>
-          <stop offset="0.72" stop-color="#c9a227"/>
-          <stop offset="1" stop-color="#4a3808"/>
+          <stop offset="0" stop-color="#a57b28"/>
+          <stop offset="0.28" stop-color="#f2dca8"/>
+          <stop offset="0.5" stop-color="#fffdf7"/>
+          <stop offset="0.72" stop-color="#d3ac56"/>
+          <stop offset="1" stop-color="#8d671d"/>
         </linearGradient>
       </defs>
       <g fill="none" stroke="url(#royalGoldD)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
