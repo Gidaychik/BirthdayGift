@@ -6,13 +6,18 @@
   <title>З Днем народження</title>
   <style>
     :root {
-      --bg1: #1e293b;
-      --bg2: #334155;
-      --bg3: #0f172a;
-      --text-main: #e2e8f0;
-      --card-bg: rgba(30, 41, 59, 0.82);
-      --accent: #38bdf8;
-      --accent2: #22d3ee;
+      --bg1: #141a24;
+      --bg2: #1c2433;
+      --bg3: #0a0d12;
+      --text-main: #e8e4dc;
+      --card-bg: rgba(18, 22, 32, 0.88);
+      --gold-deep: #5c4510;
+      --gold-mid: #b8860b;
+      --gold-bright: #f4e4bc;
+      --gold-shine: #fff8e7;
+      --frame-inset-outer: clamp(7px, 1.8vw, 16px);
+      --frame-inset-inner: clamp(16px, 2.8vw, 30px);
+      --corner-w: clamp(52px, 14vw, 118px);
     }
 
     * {
@@ -40,11 +45,185 @@
       max-width: 100%;
       overscroll-behavior-x: none;
       touch-action: pan-y;
-      background: linear-gradient(145deg, var(--bg3), var(--bg2) 45%, var(--bg1));
+      background:
+        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(212, 175, 55, 0.14), transparent 55%),
+        radial-gradient(ellipse 90% 60% at 100% 100%, rgba(139, 105, 20, 0.12), transparent 45%),
+        radial-gradient(ellipse 70% 50% at 0% 80%, rgba(184, 134, 11, 0.08), transparent 40%),
+        linear-gradient(155deg, var(--bg3), var(--bg2) 42%, var(--bg1));
+    }
+
+    .royal-frame {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .royal-frame__vignette {
+      position: absolute;
+      inset: 0;
+      box-shadow:
+        inset 0 0 min(100px, 14vw) rgba(212, 175, 55, 0.1),
+        inset 0 0 min(220px, 28vw) rgba(0, 0, 0, 0.5);
+    }
+
+    .royal-frame__line {
+      position: absolute;
+      border-radius: 2px;
+    }
+
+    .royal-frame__line--outer {
+      inset: var(--frame-inset-outer);
+      border: 2px solid transparent;
+      background:
+        linear-gradient(transparent, transparent) padding-box,
+        linear-gradient(
+          135deg,
+          var(--gold-deep),
+          var(--gold-mid),
+          var(--gold-bright),
+          var(--gold-shine),
+          var(--gold-mid),
+          var(--gold-deep)
+        ) border-box;
+      box-shadow:
+        0 0 0 1px rgba(40, 30, 8, 0.85),
+        0 0 min(32px, 4vw) rgba(212, 175, 55, 0.15),
+        inset 0 0 20px rgba(212, 175, 55, 0.06);
+    }
+
+    .royal-frame__line--inner {
+      inset: var(--frame-inset-inner);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      box-shadow:
+        inset 0 0 0 1px rgba(60, 45, 12, 0.6),
+        inset 0 0 14px rgba(212, 175, 55, 0.05);
+    }
+
+    .royal-frame__band {
+      position: absolute;
+      opacity: 0.92;
+      animation: royalBandGlow 10s ease-in-out infinite;
+    }
+
+    .royal-frame__band--top {
+      top: calc(var(--frame-inset-outer) + 5px);
+      left: calc(var(--corner-w) + var(--frame-inset-outer));
+      right: calc(var(--corner-w) + var(--frame-inset-outer));
+      height: clamp(7px, 1.4vw, 12px);
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(60, 45, 12, 0.9) 0 2px,
+          rgba(244, 228, 188, 0.85) 2px 4px,
+          rgba(139, 105, 20, 0.75) 4px 6px,
+          rgba(244, 228, 188, 0.55) 6px 8px,
+          rgba(60, 45, 12, 0.9) 8px 10px
+        ),
+        linear-gradient(90deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
+      background-blend-mode: soft-light, normal;
+    }
+
+    .royal-frame__band--bottom {
+      bottom: calc(var(--frame-inset-outer) + 5px);
+      left: calc(var(--corner-w) + var(--frame-inset-outer));
+      right: calc(var(--corner-w) + var(--frame-inset-outer));
+      height: clamp(7px, 1.4vw, 12px);
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(60, 45, 12, 0.9) 0 2px,
+          rgba(244, 228, 188, 0.85) 2px 4px,
+          rgba(139, 105, 20, 0.75) 4px 6px,
+          rgba(244, 228, 188, 0.55) 6px 8px,
+          rgba(60, 45, 12, 0.9) 8px 10px
+        ),
+        linear-gradient(90deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
+      background-blend-mode: soft-light, normal;
+    }
+
+    .royal-frame__band--left {
+      left: calc(var(--frame-inset-outer) + 5px);
+      top: calc(var(--corner-w) + var(--frame-inset-outer));
+      bottom: calc(var(--corner-w) + var(--frame-inset-outer));
+      width: clamp(7px, 1.4vw, 12px);
+      background:
+        repeating-linear-gradient(
+          180deg,
+          rgba(60, 45, 12, 0.9) 0 2px,
+          rgba(244, 228, 188, 0.85) 2px 4px,
+          rgba(139, 105, 20, 0.75) 4px 6px,
+          rgba(244, 228, 188, 0.55) 6px 8px,
+          rgba(60, 45, 12, 0.9) 8px 10px
+        ),
+        linear-gradient(180deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
+      background-blend-mode: soft-light, normal;
+    }
+
+    .royal-frame__band--right {
+      right: calc(var(--frame-inset-outer) + 5px);
+      top: calc(var(--corner-w) + var(--frame-inset-outer));
+      bottom: calc(var(--corner-w) + var(--frame-inset-outer));
+      width: clamp(7px, 1.4vw, 12px);
+      background:
+        repeating-linear-gradient(
+          180deg,
+          rgba(60, 45, 12, 0.9) 0 2px,
+          rgba(244, 228, 188, 0.85) 2px 4px,
+          rgba(139, 105, 20, 0.75) 4px 6px,
+          rgba(244, 228, 188, 0.55) 6px 8px,
+          rgba(60, 45, 12, 0.9) 8px 10px
+        ),
+        linear-gradient(180deg, var(--gold-deep), var(--gold-bright), var(--gold-mid), var(--gold-bright), var(--gold-deep));
+      background-blend-mode: soft-light, normal;
+    }
+
+    .royal-corner {
+      position: absolute;
+      width: var(--corner-w);
+      height: auto;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+    }
+
+    .royal-corner--tl {
+      top: calc(var(--frame-inset-outer) - 4px);
+      left: calc(var(--frame-inset-outer) - 4px);
+    }
+
+    .royal-corner--tr {
+      top: calc(var(--frame-inset-outer) - 4px);
+      right: calc(var(--frame-inset-outer) - 4px);
+      transform: scaleX(-1);
+    }
+
+    .royal-corner--bl {
+      bottom: calc(var(--frame-inset-outer) - 4px);
+      left: calc(var(--frame-inset-outer) - 4px);
+      transform: scaleY(-1);
+    }
+
+    .royal-corner--br {
+      bottom: calc(var(--frame-inset-outer) - 4px);
+      right: calc(var(--frame-inset-outer) - 4px);
+      transform: scale(-1);
+    }
+
+    @keyframes royalBandGlow {
+      0%, 100% { opacity: 0.88; filter: brightness(1); }
+      50% { opacity: 1; filter: brightness(1.12); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .royal-frame__band {
+        animation: none;
+      }
     }
 
     .page {
       position: relative;
+      z-index: 1;
+      isolation: isolate;
       width: 100%;
       max-width: 100%;
       min-height: 100svh;
@@ -70,18 +249,30 @@
     .intro-title {
       font-size: 1.5rem;
       margin: 0 0 1rem;
-      color: #f1f5f9;
+      color: #faf6ef;
+      text-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
     }
 
     .open-btn {
       border: 0;
       border-radius: 999px;
       padding: 0.8rem 2rem;
-      background: linear-gradient(90deg, #2563eb, #0891b2);
-      color: #fff;
+      background: linear-gradient(
+        95deg,
+        var(--gold-deep),
+        var(--gold-mid),
+        var(--gold-bright),
+        var(--gold-mid),
+        var(--gold-deep)
+      );
+      color: #1a1408;
       font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 10px 28px rgba(37, 99, 235, 0.4);
+      box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(244, 228, 188, 0.35),
+        inset 0 1px 0 rgba(255, 248, 231, 0.45);
       transition: transform 180ms ease;
     }
 
@@ -122,7 +313,7 @@
       font-size: 3rem;
       animation: partyFloat 3s infinite ease-in-out;
       user-select: none;
-      z-index: 3;
+      z-index: 6;
       pointer-events: none;
     }
 
@@ -133,7 +324,7 @@
       font-size: 5rem;
       user-select: none;
       animation: cornerPop 1.2s ease both;
-      z-index: 3;
+      z-index: 6;
       pointer-events: none;
     }
 
@@ -155,8 +346,11 @@
       border-radius: 1rem;
       background: var(--card-bg);
       backdrop-filter: blur(10px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(148, 163, 184, 0.15);
+      box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(92, 69, 16, 0.65),
+        inset 0 1px 0 rgba(255, 248, 231, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.42);
       animation: fadeInUp 700ms 350ms ease both;
       overflow-wrap: break-word;
       word-break: break-word;
@@ -176,7 +370,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, transparent 20%, rgba(56, 189, 248, 0.2) 50%, transparent 80%);
+      background: linear-gradient(120deg, transparent 18%, rgba(255, 248, 231, 0.22) 50%, transparent 82%);
       transform: translateX(-120%);
       animation: shine 3.5s ease-in-out infinite;
       pointer-events: none;
@@ -195,7 +389,8 @@
       margin-top: 0;
       margin-bottom: 1rem;
       font-size: clamp(1.75rem, 4vw, 2.5rem);
-      color: #f8fafc;
+      color: #fff8ef;
+      text-shadow: 0 2px 18px rgba(212, 175, 55, 0.25);
     }
 
     .letter p {
@@ -212,7 +407,7 @@
     .letter .sign {
       margin-top: 1rem;
       margin-bottom: 0;
-      color: #94a3b8;
+      color: #d4c4a8;
       font-size: 0.98rem;
     }
 
@@ -367,6 +562,87 @@
   </style>
 </head>
 <body>
+  <div class="royal-frame" aria-hidden="true">
+    <div class="royal-frame__vignette"></div>
+    <div class="royal-frame__line royal-frame__line--outer"></div>
+    <div class="royal-frame__line royal-frame__line--inner"></div>
+    <div class="royal-frame__band royal-frame__band--top"></div>
+    <div class="royal-frame__band royal-frame__band--bottom"></div>
+    <div class="royal-frame__band royal-frame__band--left"></div>
+    <div class="royal-frame__band royal-frame__band--right"></div>
+    <svg class="royal-corner royal-corner--tl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="royalGoldA" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#3d2e0a"/>
+          <stop offset="0.28" stop-color="#e8c872"/>
+          <stop offset="0.5" stop-color="#fff8e7"/>
+          <stop offset="0.72" stop-color="#c9a227"/>
+          <stop offset="1" stop-color="#4a3808"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#royalGoldA)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h32c18 0 32 14 32 32v20M4 4v32c0 18 14 32 32 32h20"/>
+        <path d="M14 14h18v18H14z" opacity="0.55"/>
+        <path d="M52 4v16M4 52h16M62 22l8 8M22 62l8 8"/>
+        <circle cx="68" cy="68" r="2.2" fill="url(#royalGoldA)" stroke="none" opacity="0.9"/>
+      </g>
+      <path fill="url(#royalGoldA)" opacity="0.12" d="M0 0h58v58H36Q0 58 0 22z"/>
+    </svg>
+    <svg class="royal-corner royal-corner--tr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="royalGoldB" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#3d2e0a"/>
+          <stop offset="0.28" stop-color="#e8c872"/>
+          <stop offset="0.5" stop-color="#fff8e7"/>
+          <stop offset="0.72" stop-color="#c9a227"/>
+          <stop offset="1" stop-color="#4a3808"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#royalGoldB)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h32c18 0 32 14 32 32v20M4 4v32c0 18 14 32 32 32h20"/>
+        <path d="M14 14h18v18H14z" opacity="0.55"/>
+        <path d="M52 4v16M4 52h16M62 22l8 8M22 62l8 8"/>
+        <circle cx="68" cy="68" r="2.2" fill="url(#royalGoldB)" stroke="none" opacity="0.9"/>
+      </g>
+      <path fill="url(#royalGoldB)" opacity="0.12" d="M0 0h58v58H36Q0 58 0 22z"/>
+    </svg>
+    <svg class="royal-corner royal-corner--bl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="royalGoldC" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#3d2e0a"/>
+          <stop offset="0.28" stop-color="#e8c872"/>
+          <stop offset="0.5" stop-color="#fff8e7"/>
+          <stop offset="0.72" stop-color="#c9a227"/>
+          <stop offset="1" stop-color="#4a3808"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#royalGoldC)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h32c18 0 32 14 32 32v20M4 4v32c0 18 14 32 32 32h20"/>
+        <path d="M14 14h18v18H14z" opacity="0.55"/>
+        <path d="M52 4v16M4 52h16M62 22l8 8M22 62l8 8"/>
+        <circle cx="68" cy="68" r="2.2" fill="url(#royalGoldC)" stroke="none" opacity="0.9"/>
+      </g>
+      <path fill="url(#royalGoldC)" opacity="0.12" d="M0 0h58v58H36Q0 58 0 22z"/>
+    </svg>
+    <svg class="royal-corner royal-corner--br" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="royalGoldD" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#3d2e0a"/>
+          <stop offset="0.28" stop-color="#e8c872"/>
+          <stop offset="0.5" stop-color="#fff8e7"/>
+          <stop offset="0.72" stop-color="#c9a227"/>
+          <stop offset="1" stop-color="#4a3808"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#royalGoldD)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h32c18 0 32 14 32 32v20M4 4v32c0 18 14 32 32 32h20"/>
+        <path d="M14 14h18v18H14z" opacity="0.55"/>
+        <path d="M52 4v16M4 52h16M62 22l8 8M22 62l8 8"/>
+        <circle cx="68" cy="68" r="2.2" fill="url(#royalGoldD)" stroke="none" opacity="0.9"/>
+      </g>
+      <path fill="url(#royalGoldD)" opacity="0.12" d="M0 0h58v58H36Q0 58 0 22z"/>
+    </svg>
+  </div>
   <main class="page">
     <section class="intro" id="intro">
       <div class="intro-gift">🎁</div>
@@ -383,21 +659,21 @@
         <article class="letter">
           <h1>Вітаємо з Днем народження! 🎉</h1>
           <p>
-            Бажаємо, щоб у житті все складалося легко і впевнено, а кожен новий день приносив можливості, хороші новини й приводи для посмішки.
+            Бажаємо, щоб у житті все проходило найсуворіший контроль якості й отримувало тільки найвищі оцінки 😉
           </p>
           <p>
-            Нехай вистачає сил і енергії для досягнення всіх цілей, натхнення — для крутих ідей, а впевненості — щоб сміливо рухатись вперед і брати від життя максимум.
+            Нехай кожен день відповідає всім стандартам щастя, стабільності та гарного настрою!
           </p>
           <p>
-            Нехай поруч будуть люди, з якими комфортно, цікаво і по-справжньому добре, а робота приносить не тільки результат, а й задоволення.
+            Бажаємо міцного здоров'я, витримки й енергії для нових досягнень, а також щоб у роботі було менше "заблоковано", більше ідеальних процесів і приємних результатів.
           </p>
           <p>
-            І нехай у твоєму житті завжди буде місце для відпочинку, приємних моментів, яскравих вражень і трішки пригод 😉
+            Нехай поруч будуть надійні люди, вдома — затишок і спокій, а в житті — баланс між роботою і відпочинком (і щоб відпочинок іноді все ж таки проходив без перевірок 😄).
           </p>
           <div class="photo-wrap">
             <img class="photo" src="./img.jpg" alt="Святкове фото" loading="lazy" decoding="async" />
           </div>
-          <p class="sign">З найкращими побажаннями 🎂</p>
+          <p class="sign">З найкращими побажаннями!</p>
         </article>
       </div>
     </section>
@@ -407,7 +683,16 @@
     const intro = document.getElementById("intro");
     const celebration = document.getElementById("celebration");
     const openBtn = document.getElementById("openBtn");
-    const colors = ["#2563eb", "#0891b2", "#38bdf8", "#64748b", "#f59e0b", "#0ea5e9"];
+    const colors = [
+      "#d4af37",
+      "#f4e4bc",
+      "#c9a227",
+      "#8b6914",
+      "#5c4510",
+      "#ffe082",
+      "#b8860b",
+      "#1a4d6e"
+    ];
 
     function getFallDistance() {
       const contentHeight = Math.max(
